@@ -12,7 +12,8 @@ const projects = [
       "Display flight schedules",
       "Menu-driven interface",
     ],
-    tech: ["C++"],
+    tech: ["C"],
+    github: "https://github.com/mahnoornaeembaig-sketch/github/blob/main/airplanereservation%20(1).c",
     status: "Completed",
   },
   {
@@ -95,7 +96,7 @@ const ProjectsSection = () => (
               </ul>
 
               <div className="flex gap-3">
-                <a href="#" className="btn-outline-glow text-sm !px-4 !py-2 flex items-center gap-2">
+                <a href={project.github || "#"} target="_blank" rel="noopener noreferrer" className="btn-outline-glow text-sm !px-4 !py-2 flex items-center gap-2">
                   <Github size={16} /> GitHub
                 </a>
                 <a href="#" className="btn-primary-gradient text-sm !px-4 !py-2 flex items-center gap-2">
