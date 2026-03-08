@@ -12,7 +12,8 @@ const projects = [
       "Display flight schedules",
       "Menu-driven interface",
     ],
-    tech: ["C++"],
+    tech: ["C"],
+    github: "https://github.com/mahnoornaeembaig-sketch/github/blob/main/airplanereservation%20(1).c",
     status: "Completed",
   },
   {
