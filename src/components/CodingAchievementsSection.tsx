@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Award, Star } from "lucide-react";
+import { ExternalLink, Award, Star, Github, BookOpen, GitCommit } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const badges = [
-  { name: "Problem Solving", level: "Basic", stars: 3, color: "from-emerald-500 to-teal-500" },
-  { name: "C++", level: "Basic", stars: 3, color: "from-blue-500 to-cyan-500" },
-  { name: "Python", level: "Basic", stars: 2, color: "from-yellow-500 to-orange-500" },
-  { name: "SQL", level: "Basic", stars: 2, color: "from-purple-500 to-pink-500" },
+  { name: "Problem Solving", level: "Basic", stars: 5, color: "from-emerald-500 to-teal-500", percentage: "90%" },
+  { name: "C++", level: "Basic", stars: 4, color: "from-blue-500 to-cyan-500", percentage: "85%" },
+  { name: "Python", level: "Basic", stars: 3, color: "from-yellow-500 to-orange-500", percentage: "60%" },
+  { name: "SQL", level: "Basic", stars: 2, color: "from-purple-500 to-pink-500", percentage: "40%" },
 ];
 
 const CodingAchievementsSection = () => (
@@ -56,40 +57,91 @@ const CodingAchievementsSection = () => (
             </div>
           </motion.div>
 
+          {/* GitHub Stats Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="card-glass glow-border p-8 mb-8"
+          >
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="w-20 h-20 rounded-2xl bg-[#24292e] flex items-center justify-center shrink-0">
+                <Github className="w-12 h-12 text-white" />
+              </div>
+              <div className="text-center sm:text-left flex-1">
+                <h3 className="text-2xl font-bold text-foreground mb-1">GitHub</h3>
+                <p className="text-primary font-mono text-lg mb-2">@mahnoornaeembaig-sketch</p>
+                <div className="grid grid-cols-3 gap-4 mb-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-foreground">8</div>
+                    <div className="text-xs text-muted-foreground">Repositories</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-foreground">45</div>
+                    <div className="text-xs text-muted-foreground">Contributions</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-foreground">3</div>
+                    <div className="text-xs text-muted-foreground">Languages</div>
+                  </div>
+                </div>
+                <a
+                  href="https://github.com/mahnoornaeembaig-sketch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary-gradient inline-flex items-center gap-2 !px-5 !py-2.5 text-sm"
+                >
+                  <ExternalLink size={16} /> View Profile
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Badges Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {badges.map((badge, i) => (
-              <motion.div
-                key={badge.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="card-glass glow-border p-5 text-center group cursor-pointer"
-              >
-                {/* Badge Icon */}
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${badge.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
-                  <Award className="w-8 h-8 text-white" />
-                </div>
+          <TooltipProvider>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {badges.map((badge, i) => (
+                <motion.div
+                  key={badge.name}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="card-glass glow-border p-5 text-center group cursor-pointer"
+                >
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div>
+                        {/* Badge Icon */}
+                        <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${badge.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
+                          <Award className="w-8 h-8 text-white" />
+                        </div>
 
-                {/* Badge Name */}
-                <h4 className="font-semibold text-foreground mb-1">{badge.name}</h4>
-                <p className="text-xs text-muted-foreground mb-2">{badge.level}</p>
+                        {/* Badge Name */}
+                        <h4 className="font-semibold text-foreground mb-1">{badge.name}</h4>
+                        <p className="text-xs text-muted-foreground mb-2">{badge.level}</p>
 
-                {/* Stars */}
-                <div className="flex justify-center gap-1">
-                  {[...Array(5)].map((_, si) => (
-                    <Star
-                      key={si}
-                      size={14}
-                      className={si < badge.stars ? "text-primary fill-primary" : "text-muted-foreground/30"}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                        {/* Stars */}
+                        <div className="flex justify-center gap-1">
+                          {[...Array(5)].map((_, si) => (
+                            <Star
+                              key={si}
+                              size={14}
+                              className={si < badge.stars ? "text-primary fill-primary" : "text-muted-foreground/30"}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="font-mono">Skill Level: {badge.percentage}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </motion.div>
+              ))}
+            </div>
+          </TooltipProvider>
         </div>
       </motion.div>
     </div>
