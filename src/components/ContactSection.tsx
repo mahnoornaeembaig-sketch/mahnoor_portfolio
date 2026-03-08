@@ -4,9 +4,9 @@ import { Mail, Github, Linkedin, Send } from "lucide-react";
 import { toast } from "sonner";
 
 const socials = [
-  { icon: Mail, label: "Email", href: "mailto:mahnoor@example.com", value: "mahnoor@example.com" },
-  { icon: Github, label: "GitHub", href: "https://github.com", value: "github.com/mahnoor" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", value: "linkedin.com/in/mahnoor" },
+  { icon: Mail, label: "Email", href: "mailto:mahnoornaeembaig@gmail.com", value: "mahnoornaeembaig@gmail.com" },
+  { icon: Github, label: "GitHub", href: "https://github.com/mahnoornaeembaig-sketch/github", value: "github.com/mahnoornaeembaig-sketch" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/mahnoor-naeem-baig/", value: "linkedin.com/in/mahnoor-naeem-baig" },
 ];
 
 const ContactSection = () => {
