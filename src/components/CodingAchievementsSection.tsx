@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Award, Star } from "lucide-react";
+import { ExternalLink, Award, Star, Github, BookOpen, GitCommit } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const badges = [
-  { name: "Problem Solving", level: "Basic", stars: 3, color: "from-emerald-500 to-teal-500" },
-  { name: "C++", level: "Basic", stars: 3, color: "from-blue-500 to-cyan-500" },
-  { name: "Python", level: "Basic", stars: 2, color: "from-yellow-500 to-orange-500" },
-  { name: "SQL", level: "Basic", stars: 2, color: "from-purple-500 to-pink-500" },
+  { name: "Problem Solving", level: "Basic", stars: 5, color: "from-emerald-500 to-teal-500", percentage: "90%" },
+  { name: "C++", level: "Basic", stars: 4, color: "from-blue-500 to-cyan-500", percentage: "85%" },
+  { name: "Python", level: "Basic", stars: 3, color: "from-yellow-500 to-orange-500", percentage: "60%" },
+  { name: "SQL", level: "Basic", stars: 2, color: "from-purple-500 to-pink-500", percentage: "40%" },
 ];
 
 const CodingAchievementsSection = () => (

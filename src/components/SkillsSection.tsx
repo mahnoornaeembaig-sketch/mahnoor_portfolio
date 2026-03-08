@@ -1,20 +1,21 @@
 import { motion } from "framer-motion";
 import { Code, Globe, BookOpen, Wrench } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const categories = [
   {
     icon: Code,
     title: "Programming",
     skills: [
-      { name: "C", level: 75 },
-      { name: "C++", level: 80 },
+      { name: "C", level: 85 },
+      { name: "C++", level: 85 },
       { name: "Python", level: 60 },
     ],
   },
   {
     icon: Globe,
     title: "Web Development",
-    skills: [{ name: "HTML", level: 65 }],
+    skills: [{ name: "HTML", level: 70 }],
   },
   {
     icon: BookOpen,
@@ -23,14 +24,14 @@ const categories = [
       { name: "Object-Oriented Programming", level: 80 },
       { name: "Problem Solving", level: 85 },
       { name: "Logic Design", level: 70 },
-      { name: "Basic Data Structures", level: 65 },
+      { name: "Data Structures", level: 60 },
     ],
   },
   {
     icon: Wrench,
     title: "Tools",
     skills: [
-      { name: "Git", level: 60 },
+      { name: "Git", level: 70 },
       { name: "VS Code", level: 85 },
     ],
   },
@@ -40,17 +41,25 @@ const SkillBar = ({ name, level, delay }: { name: string; level: number; delay: 
   <div className="space-y-1.5">
     <div className="flex justify-between text-sm">
       <span className="text-foreground font-medium">{name}</span>
-      <span className="text-muted-foreground font-mono text-xs">{level}%</span>
     </div>
-    <div className="skill-bar">
-      <motion.div
-        className="skill-bar-fill"
-        initial={{ width: 0 }}
-        whileInView={{ width: `${level}%` }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay, ease: "easeOut" }}
-      />
-    </div>
+    <TooltipProvider delayDuration={0}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="skill-bar cursor-pointer">
+            <motion.div
+              className="skill-bar-fill"
+              initial={{ width: 0 }}
+              whileInView={{ width: `${level}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay, ease: "easeOut" }}
+            />
+          </div>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="font-mono">{level}%</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   </div>
 );
 
