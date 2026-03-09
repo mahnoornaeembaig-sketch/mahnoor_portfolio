@@ -103,21 +103,38 @@
 
   .btn-primary-gradient {
     background-image: var(--gradient-primary);
-    @apply text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply text-primary-foreground font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+    box-shadow: 0 4px 16px -4px hsl(280 35% 72% / 0.3);
   }
 
   .btn-primary-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px -5px hsl(165 80% 48% / 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px -8px hsl(280 35% 72% / 0.5), 0 0 24px -4px hsl(280 35% 72% / 0.3);
   }
 
   .btn-outline-glow {
-    @apply border border-primary/40 text-primary font-semibold px-6 py-3 rounded-lg transition-all duration-300 bg-transparent;
+    @apply border-2 border-primary/50 text-primary font-semibold px-6 py-3 rounded-xl transition-all duration-300 bg-transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-outline-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, hsl(280 35% 72% / 0.15), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .btn-outline-glow:hover {
-    @apply bg-primary/10;
-    box-shadow: 0 0 20px -5px hsl(165 80% 48% / 0.2);
+    @apply bg-primary/10 border-primary;
+    box-shadow: 0 0 28px -8px hsl(280 35% 72% / 0.4), inset 0 0 20px -10px hsl(280 35% 72% / 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-glow:hover::before {
+    opacity: 1;
   }
 
   .section-container {
