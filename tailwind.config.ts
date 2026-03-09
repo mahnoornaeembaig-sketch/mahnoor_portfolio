@@ -51,6 +51,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        lavender: {
+          50: "hsl(280 40% 97%)",
+          100: "hsl(280 38% 92%)",
+          200: "hsl(280 36% 85%)",
+          300: "hsl(280 35% 72%)",
+          400: "hsl(280 33% 62%)",
+          500: "hsl(280 30% 52%)",
+          600: "hsl(280 28% 42%)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -72,7 +81,20 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translate(0, 0) rotate(0deg)" },
+          "33%": { transform: "translate(30px, -30px) rotate(120deg)" },
+          "66%": { transform: "translate(-20px, 20px) rotate(240deg)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        glow: {
+          "0%, 100%": { opacity: "0.5", filter: "blur(20px)" },
+          "50%": { opacity: "0.8", filter: "blur(30px)" },
         },
       },
       animation: {
@@ -80,6 +102,9 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         blink: "blink 1s infinite",
         float: "float 3s ease-in-out infinite",
+        "float-slow": "float-slow 8s ease-in-out infinite",
+        shimmer: "shimmer 3s ease-in-out infinite",
+        glow: "glow 3s ease-in-out infinite",
       },
     },
   },

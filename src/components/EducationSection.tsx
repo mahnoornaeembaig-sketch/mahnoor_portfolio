@@ -40,16 +40,21 @@ const EducationSection = () => (
           ].map((edu, i) => (
             <motion.div
               key={edu.degree}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="card-glass glow-border p-8"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              whileHover={{ scale: 1.02, y: -4 }}
+              className="card-glass p-8"
             >
               <div className="flex items-start gap-5">
-                <div className="p-3 rounded-xl bg-primary/10 shrink-0">
+                <motion.div 
+                  className="p-3 rounded-xl bg-primary/10 shrink-0"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <GraduationCap className="text-primary" size={28} />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground mb-1">
                     {edu.degree}
@@ -63,13 +68,18 @@ const EducationSection = () => (
                         Relevant Coursework
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {coursework.map((c) => (
-                          <span
+                        {coursework.map((c, ci) => (
+                          <motion.span
                             key={c}
-                            className="text-xs font-mono px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 + ci * 0.05 }}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            className="text-xs font-mono px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground border border-primary/20 cursor-default"
                           >
                             {c}
-                          </span>
+                          </motion.span>
                         ))}
                       </div>
                     </>

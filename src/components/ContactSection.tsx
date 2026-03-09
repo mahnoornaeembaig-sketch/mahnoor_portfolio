@@ -34,34 +34,56 @@ const ContactSection = () => {
 
           <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
             {/* Contact info */}
-            <div className="space-y-6">
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
               <p className="text-muted-foreground leading-relaxed">
                 I'm always open to discussing new opportunities, projects, or just
                 having a conversation about technology. Feel free to reach out!
               </p>
               <div className="space-y-4">
-                {socials.map((s) => (
-                  <a
+                {socials.map((s, i) => (
+                  <motion.a
                     key={s.label}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="card-glass glow-border p-4 flex items-center gap-4 group"
+                    className="card-glass p-4 flex items-center gap-4 group"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    whileHover={{ x: 8, scale: 1.02 }}
                   >
-                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <motion.div 
+                      className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
                       <s.icon className="text-primary" size={20} />
-                    </div>
+                    </motion.div>
                     <div>
                       <p className="text-sm text-muted-foreground">{s.label}</p>
                       <p className="text-foreground font-medium text-sm">{s.value}</p>
                     </div>
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="card-glass glow-border p-6 space-y-5">
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="card-glass p-6 space-y-5"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Name</label>
                 <input
@@ -69,7 +91,7 @@ const ContactSection = () => {
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-sm transition-all"
                   placeholder="Your name"
                 />
               </div>
@@ -80,7 +102,7 @@ const ContactSection = () => {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-sm transition-all"
                   placeholder="you@example.com"
                 />
               </div>
@@ -91,14 +113,19 @@ const ContactSection = () => {
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm resize-none"
+                  className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-sm resize-none transition-all"
                   placeholder="Your message..."
                 />
               </div>
-              <button type="submit" className="btn-primary-gradient w-full flex items-center justify-center gap-2">
+              <motion.button 
+                type="submit" 
+                className="btn-primary-gradient w-full flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <Send size={16} /> Send Message
-              </button>
-            </form>
+              </motion.button>
+            </motion.form>
           </div>
         </motion.div>
       </div>

@@ -26,16 +26,21 @@ const LearningSection = () => (
           {topics.map((topic, i) => (
             <motion.div
               key={topic.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="card-glass glow-border p-6 text-center group"
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.05, y: -8 }}
+              className="card-glass p-6 text-center group cursor-pointer"
             >
-              <div className="inline-flex p-3 rounded-xl bg-primary/10 mb-4 group-hover:scale-110 transition-transform">
+              <motion.div 
+                className="inline-flex p-3 rounded-xl bg-primary/10 mb-4 border border-primary/20"
+                whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.2 }}
+                transition={{ duration: 0.5 }}
+              >
                 <topic.icon className={topic.color} size={28} />
-              </div>
-              <h3 className="font-semibold text-foreground text-sm sm:text-base">
+              </motion.div>
+              <h3 className="font-semibold text-foreground text-sm sm:text-base group-hover:text-primary transition-colors">
                 {topic.title}
               </h3>
             </motion.div>

@@ -22,7 +22,13 @@ const AboutSection = () => (
         <p className="section-subtitle">Getting to know me</p>
 
         <div className="grid lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-3 space-y-5 text-muted-foreground leading-relaxed">
+          <motion.div 
+            className="lg:col-span-3 space-y-5 text-muted-foreground leading-relaxed"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <p>
               Ever since I first interacted with a computer, I've been fascinated by what
               makes technology work beneath the surface. This curiosity led me to pursue
@@ -40,7 +46,7 @@ const AboutSection = () => (
               to projects that push the boundaries of what technology can achieve. I'm
               always eager to learn, adapt, and take on new challenges.
             </p>
-          </div>
+          </motion.div>
 
           <div className="lg:col-span-2 space-y-4">
             {highlights.map((item, i) => (
@@ -49,12 +55,17 @@ const AboutSection = () => (
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="card-glass glow-border p-5 flex items-start gap-4"
+                transition={{ delay: 0.2 + i * 0.15, duration: 0.5 }}
+                whileHover={{ scale: 1.03, x: 5 }}
+                className="card-glass p-5 flex items-start gap-4 cursor-pointer"
               >
-                <div className="p-2 rounded-lg bg-primary/10">
+                <motion.div 
+                  className="p-2 rounded-lg bg-primary/10"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <item.icon className="text-primary" size={22} />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
