@@ -51,6 +51,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        lavender: {
+          50: "hsl(280 40% 97%)",
+          100: "hsl(280 38% 92%)",
+          200: "hsl(280 36% 85%)",
+          300: "hsl(280 35% 72%)",
+          400: "hsl(280 33% 62%)",
+          500: "hsl(280 30% 52%)",
+          600: "hsl(280 28% 42%)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
