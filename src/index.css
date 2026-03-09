@@ -139,6 +139,20 @@
 
   .section-container {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
+    position: relative;
+  }
+
+  .section-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    background: radial-gradient(ellipse at center, hsl(280 35% 72% / 0.03) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .section-title {
