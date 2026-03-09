@@ -48,29 +48,32 @@ const ProjectsSection = () => (
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="card-glass glow-border p-6 flex flex-col"
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="card-glass p-6 flex flex-col group"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex gap-2">
                   {project.tech.map((t) => (
-                    <span
+                    <motion.span
                       key={t}
-                      className="font-mono text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary"
+                      className="font-mono text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
+                      whileHover={{ scale: 1.1, borderColor: "hsl(280 35% 72%)" }}
                     >
                       {t}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-                <span
-                  className={`flex items-center gap-1.5 text-xs font-medium ${
+                <motion.span
+                  className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full ${
                     project.status === "Completed"
-                      ? "text-primary"
-                      : "text-accent"
+                      ? "text-primary bg-primary/10 border border-primary/20"
+                      : "text-accent bg-accent/10 border border-accent/20"
                   }`}
+                  whileHover={{ scale: 1.05 }}
                 >
                   {project.status === "Completed" ? (
                     <CheckCircle2 size={14} />
@@ -78,30 +81,50 @@ const ProjectsSection = () => (
                     <Clock size={14} />
                   )}
                   {project.status}
-                </span>
+                </motion.span>
               </div>
 
-              <h3 className="text-xl font-bold text-foreground mb-3">{project.title}</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 {project.description}
               </p>
 
               <ul className="space-y-1.5 mb-6 flex-1">
                 {project.features.map((f) => (
-                  <li key={f} className="text-sm text-muted-foreground flex items-start gap-2">
+                  <motion.li 
+                    key={f} 
+                    className="text-sm text-muted-foreground flex items-start gap-2"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                  >
                     <span className="text-primary mt-1">▹</span>
                     {f}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
 
               <div className="flex gap-3">
-                <a href={project.github || "#"} target="_blank" rel="noopener noreferrer" className="btn-outline-glow text-sm !px-4 !py-2 flex items-center gap-2">
+                <motion.a 
+                  href={project.github || "#"} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-outline-glow text-sm !px-4 !py-2 flex items-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Github size={16} /> GitHub
-                </a>
-                <a href="#" className="btn-primary-gradient text-sm !px-4 !py-2 flex items-center gap-2">
+                </motion.a>
+                <motion.a 
+                  href="#" 
+                  className="btn-primary-gradient text-sm !px-4 !py-2 flex items-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <ExternalLink size={16} /> View Details
-                </a>
+                </motion.a>
               </div>
             </motion.div>
           ))}
