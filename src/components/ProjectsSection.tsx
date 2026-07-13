@@ -9,10 +9,22 @@ const projects = [
     features: [
       "Manage books and library resources",
       "Track issued and returned books",
-      "Member management",
     ],
     tech: ["C++"],
-    github: "https://github.com/mahnoornaeembaig-sketch",
+    github: "https://github.com/mahnoornaeembaig-sketch/LIBRARY_MANAGEMENT_SYSTEM_C-",
+    status: "Completed",
+  },
+  {
+    title: "Flight Reservation System",
+    description:
+      "A C program designed to manage flight bookings and ticketing using robust file handling.",
+    features: [
+      "Book, view, and cancel flight reservations",
+      "Generate user tickets with unique IDs",
+      "Validate inputs and store data via file reading/writing",
+    ],
+    tech: ["C"],
+    github: "https://github.com/mahnoornaeembaig-sketch/FLIGHT-RESERVATION-SYSTEM",
     status: "Completed",
   },
   {
@@ -25,7 +37,7 @@ const projects = [
       "Manage operations securely via a private database backend",
     ],
     tech: ["Full-Stack"],
-    live: "https://example.com",
+    live: "https://thecheesecakemethod.vercel.app/",
     status: "Live",
   },
 ];
