@@ -3,20 +3,6 @@ import { ExternalLink, Github, CheckCircle2, Clock } from "lucide-react";
 
 const projects = [
   {
-    title: "Flight Management System",
-    description:
-      "A console-based C++ application designed to manage flight schedules and passenger information. Demonstrates object-oriented programming concepts and structured program design.",
-    features: [
-      "Manage flight records",
-      "Store passenger data",
-      "Display flight schedules",
-      "Menu-driven interface",
-    ],
-    tech: ["C"],
-    github: "https://github.com/mahnoornaeembaig-sketch/github/blob/main/airplanereservation%20(1).c",
-    status: "Completed",
-  },
-  {
     title: "Library Management System",
     description:
       "An object-oriented system designed to manage books, members, and borrowing operations efficiently.",
@@ -26,7 +12,21 @@ const projects = [
       "Member management",
     ],
     tech: ["C++"],
-    status: "In Progress",
+    github: "https://github.com/mahnoornaeembaig-sketch",
+    status: "Completed",
+  },
+  {
+    title: "The Cheesecake Method",
+    description:
+      "A full-stack e-commerce storefront and secure admin dashboard designed to manage boutique bakery operations efficiently.",
+    features: [
+      "Process customer orders and verified reviews",
+      "Trigger one-click automated WhatsApp status updates",
+      "Manage operations securely via a private database backend",
+    ],
+    tech: ["Full-Stack"],
+    live: "https://example.com",
+    status: "Live",
   },
 ];
 
@@ -107,24 +107,30 @@ const ProjectsSection = () => (
               </ul>
 
               <div className="flex gap-3">
-                <motion.a 
-                  href={project.github || "#"} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-outline-glow text-sm !px-4 !py-2 flex items-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Github size={16} /> GitHub
-                </motion.a>
-                <motion.a 
-                  href="#" 
-                  className="btn-primary-gradient text-sm !px-4 !py-2 flex items-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <ExternalLink size={16} /> View Details
-                </motion.a>
+                {project.github && (
+                  <motion.a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-outline-glow text-sm !px-4 !py-2 flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github size={16} /> View on GitHub
+                  </motion.a>
+                )}
+                {project.live && (
+                  <motion.a 
+                    href={project.live} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-primary-gradient text-sm !px-4 !py-2 flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <ExternalLink size={16} /> View Live Website
+                  </motion.a>
+                )}
               </div>
             </motion.div>
           ))}
